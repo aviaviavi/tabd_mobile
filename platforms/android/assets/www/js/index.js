@@ -18,13 +18,11 @@
  */
 var app = {
     // Application Constructor
+
     initialize: function() {
         this.bindEvents();
         $(".login-username").val("avi");
         $(".login-password").val("avi");
-        $.ajax({
-
-        })
     },
     // Bind Event Listeners
     //
@@ -60,8 +58,9 @@ var app = {
                 if (!response['verified']) {
                     $("h1").text("login fail");
                 } else {
-                    $("h1").text("login success");
+                    $("h1").text("Tab History");
                     $(".app").removeClass("app");
+                    this.username = $(".login-username").val();
                     this.getTabHistory();
                 }
                 $(".login_container").hide();
@@ -114,10 +113,17 @@ var app = {
             },
             success: function(response) {
                 response.tabs.forEach(function(tab) {
-                    var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
-                    $("ul").append("<li><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>");
+                    var tmpl = this.historyTempl(tab);
+                    $("ul").append(tmpl);
                 }.bind(this));
             }.bind(this)
         })
     },
+
+    historyTempl: function(tab) {
+        var sentTab = tab.from_user === this.username || (tab.from_user === null && tab.to_user !== this.username);
+        var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
+        var icon = sentTab ? "right" : "left";
+        return "<li><i class=\"fa fa-arrow-" + icon + "\"></i><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>";
+    }
 };
