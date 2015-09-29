@@ -40,19 +40,18 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        // var parentElement = document.getElementById(id);
+        // var listeningElement = parentElement.querySelector('.listening');
+        // var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        // listeningElement.setAttribute('style', 'display:none;');
+        // receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     },
 
     login: function() {
-        $("h1").text("ajaxing...");
-        var d = $("#login-form").serialize();
+        var d = $("#login_form").serialize();
         $.ajax({
             success: function(response) {
                 if (!response['verified']) {
@@ -67,7 +66,6 @@ var app = {
                 return false;
             }.bind(this),
             error: function(response) {
-                $("h1").text(response);
                 return false;
             },
             url: "https://tabdextension.com/login",
