@@ -79,4 +79,5 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~4.1.1" />
+    <preference name="phonegap-version" value="5.3.6" />
 </widget>
