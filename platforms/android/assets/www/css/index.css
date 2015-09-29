@@ -24,25 +24,25 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#4B4B4B;
-/*    background-image:linear-gradient(top, #A7A7A7 0%, #4B4B4B 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #4B4B4B 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #4B4B4B 51%);
+    background-color:#4b4b4b;
+/*    background-image:linear-gradient(top, #a7a7a7 0%, #4b4b4b 51%);
+    background-image:-webkit-linear-gradient(top, #a7a7a7 0%, #4b4b4b 51%);
+    background-image:-ms-linear-gradient(top, #a7a7a7 0%, #4b4b4b 51%);
     background-image:-webkit-gradient(
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #4B4B4B)
+        color-stop(0, #a7a7a7),
+        color-stop(0.51, #4b4b4b)
     );
 */    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'helveticaneue-light', 'helveticaneue', helvetica, arial, sans-serif;
     font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
     width:100%;
-    color: #E3EAE3;
+    color: #e3eae3;
 }
 
 /* Portrait layout (default) */
