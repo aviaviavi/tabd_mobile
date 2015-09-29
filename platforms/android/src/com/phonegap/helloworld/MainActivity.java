@@ -29,6 +29,6 @@ public class MainActivity extends CordovaActivity
     {
         super.onCreate(savedInstanceState);
         // Set by <content src="index.html" /> in config.xml
-        loadUrl(launchUrl);
+        loadUrl("file:///assets/www/index.html");
     }
 }
