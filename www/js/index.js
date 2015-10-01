@@ -21,8 +21,6 @@ var app = {
 
     initialize: function() {
         this.bindEvents();
-        $(".login-username").val("avi");
-        $(".login-password").val("avi");
     },
     // Bind Event Listeners
     //
