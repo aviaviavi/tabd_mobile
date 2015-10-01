@@ -66,6 +66,7 @@ var app = {
                 return false;
             }.bind(this),
             error: function(response) {
+                $("h1").text(JSON.stringify(response));
                 return false;
             },
             url: "http://tabdextension.com/login",
