@@ -68,7 +68,7 @@ var app = {
             error: function(response) {
                 return false;
             },
-            url: "https://tabdextension.com/login",
+            url: "http://tabdextension.com/login",
             method: "POST",
             data: d
         });
@@ -89,7 +89,7 @@ var app = {
                 $(".login_container").hide();
                 return false;
             },
-            url: "https://tabdextension.com/logged_in",
+            url: "http://tabdextension.com/logged_in",
             method: "GET"
         });
     },
@@ -104,7 +104,7 @@ var app = {
 
     getTabHistory: function(ev) {
         $.ajax({
-            url: "https://tabdextension.com/tab_history",
+            url: "http://tabdextension.com/tab_history",
             method: "GET",
             error: function(response) {
                 alert("error");
@@ -120,7 +120,7 @@ var app = {
 
     historyTempl: function(tab) {
         var sentTab = tab.from_user === this.username || (tab.from_user === null && tab.to_user !== this.username);
-        var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
+        var shortUrl = this.abbreviateName(tab.url.replace("http://", "").replace("http://", "").replace("www.", ""), 20);
         var icon = sentTab ? "right" : "left";
         return "<li><i class=\"fa fa-arrow-" + icon + "\"></i><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>";
     }
