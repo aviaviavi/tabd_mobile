@@ -56,7 +56,7 @@ var app = {
                 if (!response['verified']) {
                     $("h1").text("Invalid credentials");
                 } else {
-                    $(".navigation-bar__center").text("Tab History");
+                    $("h1").text("Tab History");
                     $(".app").removeClass("app");
                     this.username = $(".login-username").val();
                     $(".login_container").hide();
@@ -121,7 +121,7 @@ var app = {
 
     historyTempl: function(tab) {
         var sentTab = tab.from_user === this.username || (tab.from_user === null && tab.to_user !== this.username);
-        var shortUrl = this.abbreviateName(tab.url.replace("http://", "").replace("http://", "").replace("www.", ""), 20);
+        var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
         var icon = sentTab ? "right" : "left";
         return "<li><i class=\"fa fa-arrow-" + icon + "\"></i><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>";
     }
