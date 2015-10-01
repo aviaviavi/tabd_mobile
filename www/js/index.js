@@ -18,8 +18,11 @@
  */
 var app = {
     // Application Constructor
+
     initialize: function() {
         this.bindEvents();
+        $(".login-username").val("avi");
+        $(".login-password").val("avi");
     },
     // Bind Event Listeners
     //
@@ -37,13 +40,88 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        // var parentElement = document.getElementById(id);
+        // var listeningElement = parentElement.querySelector('.listening');
+        // var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        // listeningElement.setAttribute('style', 'display:none;');
+        // receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
+    },
+
+    login: function() {
+        var d = $("#login_form").serialize();
+        $.ajax({
+            success: function(response) {
+                if (!response['verified']) {
+                    $("h1").text("login fail");
+                } else {
+                    $("h1").text("Tab History");
+                    $(".app").removeClass("app");
+                    this.username = $(".login-username").val();
+                    this.getTabHistory();
+                }
+                $(".login_container").hide();
+                return false;
+            }.bind(this),
+            error: function(response) {
+                return false;
+            },
+            url: "https://tabdextension.com/login",
+            method: "POST",
+            data: d
+        });
+    },
+
+    verifyLoggedIn: function() {
+        $.ajax({
+            success: function(response) {
+                if (response.verified) {
+                    $(".login_container").hide();
+                    this.getTabHistory()
+                } else {
+                    $(".login_container").hide();
+                }
+                return false;
+            }.bind(this),
+            error: function(response) {
+                $(".login_container").hide();
+                return false;
+            },
+            url: "https://tabdextension.com/logged_in",
+            method: "GET"
+        });
+    },
+
+    abbreviateName: function(name, letters) {
+        if (name.length > letters) {
+            return name.substring(0, letters - 3) + "..."
+        } else {
+            return name;
+        }
+    },
+
+    getTabHistory: function(ev) {
+        $.ajax({
+            url: "https://tabdextension.com/tab_history",
+            method: "GET",
+            error: function(response) {
+                alert("error");
+            },
+            success: function(response) {
+                response.tabs.forEach(function(tab) {
+                    var tmpl = this.historyTempl(tab);
+                    $("ul").append(tmpl);
+                }.bind(this));
+            }.bind(this)
+        })
+    },
+
+    historyTempl: function(tab) {
+        var sentTab = tab.from_user === this.username || (tab.from_user === null && tab.to_user !== this.username);
+        var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
+        var icon = sentTab ? "right" : "left";
+        return "<li><i class=\"fa fa-arrow-" + icon + "\"></i><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>";
     }
 };
