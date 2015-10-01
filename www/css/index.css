@@ -55,3 +55,11 @@ a {
     padding-top: 100px;
     margin-top: 20%;
 }
+
+.history_container {
+    display: none;
+}
+
+.history_container h1 {
+    padding-top: 15px;
+}

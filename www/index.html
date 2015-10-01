@@ -36,23 +36,27 @@
     <body>
     <div class="app">
         <div id="deviceready">
+        <div class="navigation-bar">
+  <div class="navigation-bar__center">Log In</div>
+</div>
             <div class="login_container">
-                <h1>Sign In</h1>
+                <h1></h1>
                 <form id="login_form">
                     <input type="text" name="login-username" class="text-input--underbar login-username" placeholder="Username">
                     <br>
                     <br>
                     <input type="password" name="login-password" class="text-input--underbar login-password input-margin-bottom" placeholder="Password">
                 </form>
-                <button onclick="app.login()" class="button button--outline">Log In</button>
+                <button onclick="app.login()" class="button button--outline">Go</button>
             </div>
         </div>
-        <ul class="tabd_history">
-        </ul>
+        <div class="history_container">
+            <ul class="tabd_history">
+            </ul>
+        </div>
     </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/underscore-min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();

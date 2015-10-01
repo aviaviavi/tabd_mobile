@@ -49,22 +49,24 @@ var app = {
     },
 
     login: function() {
+        $("h1").text("Loading...");
         var d = $("#login_form").serialize();
         $.ajax({
             success: function(response) {
                 if (!response['verified']) {
-                    $("h1").text("login fail");
+                    $("h1").text("Invalid credentials");
                 } else {
-                    $("h1").text("Tab History");
+                    $(".navigation-bar__center").text("Tab History");
                     $(".app").removeClass("app");
                     this.username = $(".login-username").val();
+                    $(".login_container").hide();
+                    $(".history_container").show();
                     this.getTabHistory();
                 }
-                $(".login_container").hide();
                 return false;
             }.bind(this),
             error: function(response) {
-                $("h1").text(JSON.stringify(response));
+                $("h1").text("Error");
                 return false;
             },
             url: "http://tabdextension.com/login",
