@@ -1,12 +1,15 @@
 body {
     background-color: #4b4b4b;
     color: rgb(227, 234, 227);
-    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+    font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
 }
 
+
 /* Portrait layout (default) */
+
 .app {
-    background:url(../img/logo_tabd.png) no-repeat center top; /* 170px x 200px */
+    background: url(../img/logo_tabd.png) no-repeat center top;
+    /* 170px x 200px */
     text-align: center;
     color: inherit;
 }
@@ -26,6 +29,7 @@ a {
     text-decoration: none;
 }
 
+
 /*input {
     background-color: transparent;
     width: 60%;
@@ -37,6 +41,7 @@ a {
     line-height: 35px;
 }
 */
+
 .fa-arrow-left {
     color: #307f2b;
     padding-right: 15px;
@@ -63,4 +68,53 @@ a {
 .history_container h1 {
     padding-top: 15px;
     text-align: center;
+}
+
+.login-username {
+    margin-left: 3px;
+}
+
+
+/*Example float button code*/
+
+.float-button {
+    background-color: #307f2b;
+    opacity: 0.9;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 25px;
+    font-size: 40px;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 1000;
+}
+
+.float-button .height_fix {
+    margin-top: 100%;
+    /*border: 1px solid red;*/
+}
+
+.float-button .content {
+    position: absolute;
+    left: 1px;
+    top: 15px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.float-button .content .fa-eye {
+    color: #4b4b4b;
+}
+
+.float-button:active {
+    background-color: #6EB86E;
+}
+
+.login_button {
+    width: 150px;
 }

@@ -27,7 +27,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        $(".discovery_button").on('touchstart', this.discover);
     },
     // deviceready Event Handler
     //
@@ -56,12 +57,8 @@ var app = {
                 if (!response['verified']) {
                     $("h1").text("Invalid credentials");
                 } else {
-                    $("h1").text("Tab History");
-                    $(".app").removeClass("app");
-                    this.username = $(".login-username").val();
-                    $(".login_container").hide();
-                    $(".history_container").show();
-                    this.getTabHistory();
+                    this.verifyLoggedIn()
+
                 }
                 return false;
             }.bind(this),
@@ -80,11 +77,17 @@ var app = {
             success: function(response) {
                 if (response.verified) {
                     $(".login_container").hide();
+                    if (response.verified) {
+                        this.username = response.username;
+                        $("h1").text("Tab History");
+                        $(".app").removeClass("app");
+                        $(".login_container").hide();
+                        $(".history_container").show();
+                    }
                     this.getTabHistory()
                 } else {
-                    $(".login_container").hide();
+                    $("h1").text("Invalid credentials when verifying");
                 }
-                return false;
             }.bind(this),
             error: function(response) {
                 $(".login_container").hide();
@@ -124,5 +127,15 @@ var app = {
         var shortUrl = this.abbreviateName(tab.url.replace("https://", "").replace("http://", "").replace("www.", ""), 20);
         var icon = sentTab ? "right" : "left";
         return "<li><i class=\"fa fa-arrow-" + icon + "\"></i><a href=\"" + tab.url + "\">" + shortUrl + "</a></li>";
+    },
+
+    discover: function() {
+        navigator.notification.vibrate(40);
+        try {
+            new Toast().showShortCenter("yay");
+            $("h1").text("clicked");
+        } catch(err) {
+            $("h1").text(err.message);
+        }
     }
 };
