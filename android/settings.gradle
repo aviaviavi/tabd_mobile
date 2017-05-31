@@ -1,0 +1,3 @@
+rootProject.name = 'TabdMobile'
+
+include ':app'
