@@ -13,8 +13,8 @@ const FormInput = (props) => {
   return (
     <TextInput
       style={styles.textInput}
-      onChangeText={(text) => props.parent.setState({[props.type]: text})}
-      value={props.parent[props.type]}
+      onChangeText={(text) => props.onChange(text)}
+      value={props.value}
       placeholder={props.placeholder}
     />
   );
@@ -26,16 +26,30 @@ export default class Login extends Component {
     this.state = { username: null, password: null };
   }
 
+  onChange = (field) => {
+    return (text) => {
+      this.setState({[field]: text})
+    }
+  }
+
   submitForm = () => {
-    Alert.alert(this.state.username);
+    Alert.alert(this.state.username + ', ' + this.state.password);
   }
 
   render() {
     return (
       <View style={styles.loginForm}>
-        <FormInput type="username" placeholder="Username" parent={this} />
+        <FormInput
+          placeholder="Username"
+          value={this.state.username}
+          onChange={this.onChange("username")}
+        />
 
-        <FormInput type="password" placeholder="Password" parent={this} />
+        <FormInput
+          placeholder="Password"
+          value={this.state.password}
+          onChange={this.onChange("password")}
+        />
 
         <Button
           onPress={this.submitForm}
