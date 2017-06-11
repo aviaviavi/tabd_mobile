@@ -15,6 +15,7 @@ const FormInput = (props) => {
       style={styles.textInput}
       onChangeText={(text) => props.onChange(text)}
       value={props.value}
+      secureTextEntry={!!props.isPassword}
       placeholder={props.placeholder}
     />
   );
@@ -33,7 +34,30 @@ export default class Login extends Component {
   }
 
   submitForm = () => {
-    Alert.alert(this.state.username + ', ' + this.state.password);
+    fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'login-username': this.state.username,
+        'login-password': this.state.password,
+      })
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((responseJson) => {
+        if (responseJson.verified) {
+          this.props.onLogin(responseJson.username)
+        } else {
+          console.warn('Invalid login')
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
@@ -48,6 +72,7 @@ export default class Login extends Component {
         <FormInput
           placeholder="Password"
           value={this.state.password}
+          isPassword={true}
           onChange={this.onChange("password")}
         />
 

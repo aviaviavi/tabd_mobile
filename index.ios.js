@@ -1,27 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View
-} from 'react-native';
+} from 'react-native'
 
-import Login from './src/pages/Login'
+import Root from './src/pages/Root'
 
-export default class TabdMobile extends Component {
-  state = {
-      logged_in: false
-  }
-
+class Splash extends Component {
   render() {
-    if (this.state.logged_in) {
-      return <Login />;
-    } else {
-      // TODO: create root component
-      // return <Root />
-      return <Login />;
-    }
+    return <Text>Tabd</Text>
   }
 }
 
-AppRegistry.registerComponent('TabdMobile', () => TabdMobile);
+AppRegistry.registerComponent('TabdMobile', () => Root)
