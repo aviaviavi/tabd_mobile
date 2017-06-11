@@ -75,31 +75,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20
   }
-  // button: {
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   padding: 20
-  // },
-  // labelContainer: {
-  //   marginBottom: 20
-  // },
-  // textLabel: {
-  //   fontSize: 20,
-  //   fontWeight: 'bold',
-  //   fontFamily: 'Verdana',
-  //   marginBottom: 10,
-  //   color: '#595856'
-  // },
-  // scroll: {
-  //   backgroundColor: '#E1D7D8',
-  //   padding: 30,
-  //   flexDirection: 'column'
-  // },
-  // alignRight: {
-  //   alignSelf: 'flex-end'
-  // },
-  // label: {
-  //   color: '#0d8898',
-  //   fontSize: 20
-  // }
 });

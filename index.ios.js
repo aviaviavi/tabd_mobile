@@ -9,30 +9,19 @@ import {
 import Login from './src/pages/Login'
 
 export default class TabdMobile extends Component {
+  state = {
+      logged_in: false
+  }
+
   render() {
-    return (
-      <Login />
-    );
+    if (this.state.logged_in) {
+      return <Login />;
+    } else {
+      // TODO: create root component
+      // return <Root />
+      return <Login />;
+    }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('TabdMobile', () => TabdMobile);
