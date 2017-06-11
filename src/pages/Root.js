@@ -7,6 +7,7 @@ import {
   Text,
   View,
   TextInput,
+  Linking,
 } from 'react-native';
 
 import Login from './Login'
@@ -19,9 +20,9 @@ class Splash extends Component {
 
 export default class Root extends Component {
 
-
   state = {
-    logged_in: null
+    logged_in: null,
+    username: null
   }
 
   componentWillMount() {
@@ -38,6 +39,16 @@ export default class Root extends Component {
       .catch(error => {
         console.error('error', error)
       })
+  }
+
+  componentDidMount() {
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        console.log('Initial url is: ' + url);
+      } else {
+        console.log('no url')
+      }
+    }).catch(err => console.error('An error occurred', err));
   }
 
   onLogin(username) {
@@ -69,7 +80,7 @@ export default class Root extends Component {
       )
       break
     case false:
-      return <Login onLogin={this.onLogin} />
+      return <Login onLogin={this.onLogin.bind(this)} />
         break
     case true:
       return (
@@ -77,7 +88,7 @@ export default class Root extends Component {
           <Text>Logged in as: {this.state.username}</Text>
           <Button
             title="Log Out"
-            onPress={this.onLogout}
+            onPress={this.onLogout.bind(this)}
             />
         </View>
       )
