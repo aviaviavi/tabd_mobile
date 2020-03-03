@@ -1,3 +1,8 @@
+
+lib/protobuf/
+!lib/protobuf/README.md
+
+
 # Miscellaneous
 *.class
 *.log
@@ -28,6 +33,7 @@
 .packages
 .pub-cache/
 .pub/
+pubspec.lock
 /build/
 
 # Web related
