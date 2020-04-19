@@ -15,7 +15,7 @@ class DrawerItem extends StatelessWidget {
     return ListTile(
       leading: Icon(icon),
       title: Text(label),
-      onTap: () => route.navigate(context),
+      onTap: () => route.navigate(context, null),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/screens/history_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
@@ -19,11 +20,11 @@ extension Routes on RouteLocations {
 
   String get name => nameFor(this);
 
-  void navigate(BuildContext context) =>
-      Navigator.pushNamed(context, this.name);
+  void navigate(BuildContext context, GoogleSignInAccount currentUser) =>
+      Navigator.pushNamed(context, this.name, arguments: currentUser);
 
   static Map<String, RouteFunc> routeMap = {
     nameFor(RouteLocations.home): (ctx) => HomeScreen(title: 'Tabd Mobile!'),
-    nameFor(RouteLocations.history): (ctx) => HistoryScreen(),
+    nameFor(RouteLocations.history): (ctx) => HistoryScreen(null),
   };
 }

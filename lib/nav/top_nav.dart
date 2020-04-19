@@ -9,7 +9,7 @@ class TopNav {
       actions: <Widget>[
         IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () => RouteLocations.home.navigate(context)),
+            onPressed: () => RouteLocations.home.navigate(context, null)),
       ],
     );
   }
