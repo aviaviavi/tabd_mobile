@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         IconButton(
           icon: new Icon(FontAwesomeIcons.podcast),
           iconSize: 100,
-          onPressed: () => update('http://avi.press'),
+          onPressed: () => RouteLocations.history.navigate(context),
         ),
         ],
       )

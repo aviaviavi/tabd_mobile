@@ -1,9 +1,11 @@
 import 'package:mobile/main.dart';
+import 'package:mobile/screens/history_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 enum RouteLocations {
+  history,
   home,
   login,
   logout,
@@ -22,6 +24,8 @@ extension Routes on RouteLocations {
 
   static Map<String, RouteFunc> routeMap = {
     nameFor(RouteLocations.home): (ctx) => HomeScreen(title: MyApp.title),
-};
+    nameFor(RouteLocations.history): (ctx) => HistoryScreen(),
+
+  };
 
 }
