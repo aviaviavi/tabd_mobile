@@ -4,6 +4,9 @@ import 'dart:convert' show json;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'nav/routes.dart';
+import 'nav/routes.dart';
+
 //void main() => runApp(MyApp());
 //
 //class MyApp extends StatelessWidget {
@@ -39,6 +42,7 @@ void main() {
     MaterialApp(
       title: 'Google Sign In',
       home: SignInDemo(),
+      routes: Routes.routeMap,
     ),
   );
 }
@@ -113,9 +117,11 @@ class SignInDemoState extends State<SignInDemo> {
 //    return null;
 //  }
 
-  Future<void> _handleSignIn() async {
+  Future<void> _handleSignIn(BuildContext context) async {
     try {
       await _googleSignIn.signIn();
+      print("here!!!");
+      RouteLocations.history.navigate(context);
     } catch (error) {
       print(error);
     }
@@ -123,7 +129,7 @@ class SignInDemoState extends State<SignInDemo> {
 
   Future<void> _handleSignOut() => _googleSignIn.disconnect();
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     if (_currentUser != null) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -154,7 +160,7 @@ class SignInDemoState extends State<SignInDemo> {
           const Text("You are not currently signed in."),
           RaisedButton(
             child: const Text('SIGN IN'),
-            onPressed: _handleSignIn,
+            onPressed: () => _handleSignIn(context),
           ),
         ],
       );
@@ -169,7 +175,7 @@ class SignInDemoState extends State<SignInDemo> {
         ),
         body: ConstrainedBox(
           constraints: const BoxConstraints.expand(),
-          child: _buildBody(),
+          child: _buildBody(context),
         ));
   }
 }
