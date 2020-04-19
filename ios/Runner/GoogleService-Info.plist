@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>843429770487-j24pmh83v3noau5tulp3a83t1d62oil5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.843429770487-j24pmh83v3noau5tulp3a83t1d62oil5</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>843429770487-rg1322ev6e1cp4tkn17n2ecr7s3aq4ia.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDyQFZlLK1O9Asz2VZUsGQFO4KKsgi0Y2k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>843429770487</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tabd.mobile</string>
+	<key>PROJECT_ID</key>
+	<string>tabd-160702</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tabd-160702.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:843429770487:ios:82a2ae09749f38ad2a4ff2</string>
+	<key>DATABASE_URL</key>
+	<string>https://tabd-160702.firebaseio.com</string>
+</dict>
+</plist>
