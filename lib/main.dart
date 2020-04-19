@@ -68,6 +68,8 @@ class SignInDemoState extends State<SignInDemo> {
       });
       if (_currentUser != null) {
         print("We got a user!");
+        print(_currentUser);
+        RouteLocations.history.navigate(context, _currentUser);
       }
     });
     _googleSignIn.signInSilently();
@@ -76,10 +78,6 @@ class SignInDemoState extends State<SignInDemo> {
   Future<void> _handleSignIn(BuildContext context, GoogleSignInAccount currentUser) async {
     try {
       await _googleSignIn.signIn();
-      print("here!!!");
-      print(_currentUser);
-      RouteLocations.history.navigate(context, currentUser);
-
     } catch (error) {
       print(error);
     }
