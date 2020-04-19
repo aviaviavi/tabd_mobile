@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843429770487",
+    "firebase_url": "https://tabd-160702.firebaseio.com",
+    "project_id": "tabd-160702",
+    "storage_bucket": "tabd-160702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843429770487:android:7f24f2e5738d076f2a4ff2",
+        "android_client_info": {
+          "package_name": "com.tabd.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843429770487-rg1322ev6e1cp4tkn17n2ecr7s3aq4ia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tabd.mobile",
+            "certificate_hash": "b9fcf9f75543120041db1f9d80b6dbc69171b48a"
+          }
+        },
+        {
+          "client_id": "843429770487-pq25huct2ma8g9h6rslorg2itr62au4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf6_XIMtE2QuKyQewP7R-hOH57PIAgeJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843429770487-pq25huct2ma8g9h6rslorg2itr62au4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

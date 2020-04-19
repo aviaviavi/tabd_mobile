@@ -23,9 +23,8 @@ extension Routes on RouteLocations {
       Navigator.pushNamed(context, this.name);
 
   static Map<String, RouteFunc> routeMap = {
-    nameFor(RouteLocations.home): (ctx) => HomeScreen(title: MyApp.title),
-    nameFor(RouteLocations.history): (ctx) => HistoryScreen(),
+  nameFor(RouteLocations.home): (ctx) => HomeScreen(title: 'Tabd Mobile!'),
+  nameFor(RouteLocations.history): (ctx) => HistoryScreen(),
 
   };
-
 }
