@@ -3,11 +3,9 @@ import 'dart:async';
 import 'dart:convert' show json;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'dart:convert';
 import 'nav/routes.dart';
-import 'nav/routes.dart';
-import 'nav/routes.dart';
-import 'nav/routes.dart';
+import 'package:requests/requests.dart';
 
 //void main() => runApp(MyApp());
 //
@@ -54,6 +52,16 @@ class SignInDemo extends StatefulWidget {
   State createState() => SignInDemoState();
 }
 
+class OauthLogin {
+  String googleToken;
+  OauthLogin({this.googleToken});
+
+  Map<String, dynamic> toJson() =>
+      {
+        'google_token': googleToken,
+      };
+}
+
 class SignInDemoState extends State<SignInDemo> {
   GoogleSignInAccount _currentUser;
   String _contactText;
@@ -61,7 +69,7 @@ class SignInDemoState extends State<SignInDemo> {
   @override
   void initState() {
     super.initState();
-    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
+    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) async {
       setState(() {
         _currentUser = account;
         print(account);
@@ -69,7 +77,15 @@ class SignInDemoState extends State<SignInDemo> {
       if (_currentUser != null) {
         print("We got a user!");
         print(_currentUser);
-        RouteLocations.history.navigate(context, _currentUser);
+        GoogleSignInAuthentication authentication = await account.authentication;
+
+        try {
+          Response response = await Requests.post('https://tabdextension.com/oauth/verify', json: new OauthLogin(googleToken: authentication.accessToken).toJson());
+          RouteLocations.history.navigate(context, _currentUser);
+        } catch (error) {
+          print("Error fetching history");
+          print(error);
+        }
       }
     });
     _googleSignIn.signInSilently();
