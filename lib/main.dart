@@ -75,10 +75,8 @@ class SignInDemoState extends State<SignInDemo> {
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) async {
       setState(() {
         _currentUser = account;
-        print(account);
       });
       if (_currentUser != null) {
-        print("We got a user!");
         print(_currentUser);
         GoogleSignInAuthentication authentication = await account.authentication;
 

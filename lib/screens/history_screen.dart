@@ -89,7 +89,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     final User currentUser = ModalRoute.of(context).settings.arguments;
     String displayName = currentUser == null ? 'No name' : currentUser.username;
-    this.fetchHistory();
+    // TODO avi - this needs to be moved to an init method so we only do it once
+    if (this.tabs.tabs.length == 0) {
+      this.fetchHistory();
+    }
     return Scaffold(
       appBar: TopNav.instance("Welcome " + displayName, context),
       drawer: MenuDrawer(RouteLocations.history),
