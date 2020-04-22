@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:convert';
 import 'nav/routes.dart';
 import 'package:requests/requests.dart';
+import 'tabd_api/client.dart';
 
 //void main() => runApp(MyApp());
 //
@@ -65,6 +66,8 @@ class OauthLogin {
 class SignInDemoState extends State<SignInDemo> {
   GoogleSignInAccount _currentUser;
   String _contactText;
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -81,7 +84,8 @@ class SignInDemoState extends State<SignInDemo> {
 
         try {
           Response response = await Requests.post('https://tabdextension.com/oauth/verify', json: new OauthLogin(googleToken: authentication.accessToken).toJson());
-          RouteLocations.history.navigate(context, _currentUser);
+          final user = await new TabdClient().getUser();
+          RouteLocations.history.navigate(context, user);
         } catch (error) {
           print("Error fetching history");
           print(error);
@@ -96,6 +100,15 @@ class SignInDemoState extends State<SignInDemo> {
       await _googleSignIn.signIn();
     } catch (error) {
       print(error);
+    }
+  }
+
+  Future<void> _handleTabdSignIn(BuildContext context, String username, String password) async {
+    var client = new TabdClient();
+    print("Logging you in. Username: ${username}. pw: ${password}");
+    final authenticatedUser = await client.login(username, password);
+    if (authenticatedUser != null) {
+      RouteLocations.history.navigate(context, authenticatedUser);
     }
   }
 
@@ -138,15 +151,15 @@ class SignInDemoState extends State<SignInDemo> {
             key: Key('login'),
             child: Column(children: <Widget>[
               TextFormField(
-                  initialValue: 'username'
+                controller: usernameController,
               ),
               TextFormField(
-                initialValue: 'password',
                 obscureText: true,
+                controller: passwordController,
               ),
               RaisedButton(
                 child: const Text('TABD SIGN IN'),
-                onPressed: () => _handleTabdSignIn(context),
+                onPressed: () => _handleTabdSignIn(context, usernameController.text, passwordController.text),
               ),
     ],
     )

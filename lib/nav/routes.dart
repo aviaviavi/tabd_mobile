@@ -4,6 +4,7 @@ import 'package:mobile/screens/history_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/user/user.dart';
 
 enum RouteLocations {
   history,
@@ -20,7 +21,7 @@ extension Routes on RouteLocations {
 
   String get name => nameFor(this);
 
-  void navigate(BuildContext context, GoogleSignInAccount currentUser) =>
+  void navigate(BuildContext context, User currentUser) =>
       Navigator.pushNamed(context, this.name, arguments: currentUser);
 
   static Map<String, RouteFunc> routeMap = {

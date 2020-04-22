@@ -8,13 +8,12 @@ import 'package:mobile/history/history_list_item.dart';
 import 'package:mobile/nav/drawer/menu_drawer.dart';
 import 'package:mobile/nav/routes.dart';
 import 'package:mobile/nav/top_nav.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
+import 'package:mobile/user/user.dart';
 import 'package:requests/requests.dart';
 
 class HistoryScreen extends StatefulWidget {
 
-  GoogleSignInAccount currentUser;
+  User currentUser;
 
   HistoryScreen(this.currentUser);
 
@@ -49,12 +48,12 @@ class TabHistory {
 
 class _HistoryScreenState extends State<HistoryScreen> {
 
-  GoogleSignInAccount currentUser;
+  User currentUser;
   TabHistory tabs = new TabHistory(tabs: []);
 
   _HistoryScreenState(this.currentUser);
 
-  void update(TabHistory tabs, GoogleSignInAccount currentUser) {
+  void update(TabHistory tabs, User currentUser) {
     setState(() {
       this.tabs = tabs;
       this.currentUser = currentUser;
@@ -88,8 +87,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final GoogleSignInAccount currentUser = ModalRoute.of(context).settings.arguments;
-    String displayName = currentUser == null ? 'No name' : currentUser.displayName;
+    final User currentUser = ModalRoute.of(context).settings.arguments;
+    String displayName = currentUser == null ? 'No name' : currentUser.username;
     this.fetchHistory();
     return Scaffold(
       appBar: TopNav.instance("Welcome " + displayName, context),
