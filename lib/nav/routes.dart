@@ -2,6 +2,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/screens/history_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/sign_in_demo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/web_view_screen.dart';
@@ -31,5 +32,6 @@ extension Routes on RouteLocations {
     nameFor(RouteLocations.home): (ctx) => HomeScreen(title: 'Tabd Mobile!'),
     nameFor(RouteLocations.history): (ctx) => HistoryScreen(null),
     nameFor(RouteLocations.web_view): (ctx) => WebViewScreen(),
+    nameFor(RouteLocations.logout): (ctx) => SignInDemo(),
   };
 }
