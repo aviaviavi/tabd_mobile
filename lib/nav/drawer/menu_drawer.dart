@@ -18,7 +18,8 @@ class MenuDrawer extends StatelessWidget {
 
   static const List<DrawerItem> _logged_in_items = [
     DrawerItem('History', FontAwesomeIcons.history, RouteLocations.settings),
-    DrawerItem('Settings', FontAwesomeIcons.cog, RouteLocations.settings),
+    // TODO: build the history screen 
+    // DrawerItem('Settings', FontAwesomeIcons.cog, RouteLocations.settings),
     DrawerItem('Log Out', FontAwesomeIcons.signOutAlt, RouteLocations.logout),
   ];
 
