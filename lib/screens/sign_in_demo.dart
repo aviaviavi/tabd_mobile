@@ -128,7 +128,7 @@ class SignInDemoState extends State<SignInDemo> {
         children: <Widget>[
           const Text("You are not currently signed in."),
           RaisedButton(
-            child: const Text('Sign into Tabd'),
+            child: const Text('Google Sign In'),
             onPressed: () => _handleSignIn(context, _currentUser),
           ),
           Form(
